@@ -1,6 +1,6 @@
 # Revenue Intelligence Economic Multiplier
 
-An interactive ROIC calculator for Revenue Intelligence and enterprise AI investment scenarios.
+Interactive ROIC calculator for Revenue Intelligence and enterprise AI investment scenarios.
 
 ## Purpose
 
@@ -25,3 +25,14 @@ It then calculates:
 
 ```text
 ROIC = (Revenue Base × Improvement Lever × Gross Margin) ÷ AI Investment
+```
+
+## Author
+
+Gary Rikard, MBA
+
+LinkedIn: https://www.linkedin.com/in/garyrikard
+
+## Live Version
+
+https://grikard.github.io/revenue-intelligence-calculator/
