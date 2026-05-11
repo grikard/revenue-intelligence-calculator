@@ -3,321 +3,521 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Primary metadata -->
-  <title>Revenue Intelligence Economic Multiplier | Gary Rikard, MBA</title>
-  <meta name="title" content="Revenue Intelligence Economic Multiplier | Gary Rikard, MBA">
-  <meta name="description" content="Interactive ROIC calculator showing how Revenue Intelligence and enterprise AI investment scenarios translate into incremental revenue, gross profit, ROIC multiple, and payback period.">
+  <title>Revenue Intelligence Economic Multiplier | CFO Bridge | Gary Rikard, MBA</title>
+  <meta name="title" content="Revenue Intelligence Economic Multiplier | CFO Bridge | Gary Rikard, MBA">
+  <meta name="description" content="Interactive Revenue Intelligence economic multiplier calculator with CFO bridge to implied NPV and Year-1 ROIC by industry profile.">
   <meta name="author" content="Gary Rikard">
   <meta name="creator" content="Gary Rikard">
   <meta name="publisher" content="Gary Rikard">
-  <meta name="keywords" content="Revenue Intelligence, AI ROI, ROIC, enterprise AI, workflow economics, Salesforce, Agentforce, Data Cloud, gross profit, payback period, AI investment calculator, capital allocation">
+  <meta name="keywords" content="Revenue Intelligence, Economic Multiplier, Gross Contribution Multiple, NPV, ROIC, CFO, Contribution Margin, Enterprise AI, Workflow Economics, Capital Allocation">
   <meta name="robots" content="index, follow">
   <meta name="language" content="en">
-  <meta name="theme-color" content="#111827">
+  <meta name="theme-color" content="#102B5C">
   <link rel="canonical" href="https://grikard.github.io/revenue-intelligence-calculator/">
-
-  <!-- Open Graph / LinkedIn / Substack link previews -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://grikard.github.io/revenue-intelligence-calculator/">
-  <meta property="og:title" content="Revenue Intelligence Economic Multiplier | Gary Rikard">
-  <meta property="og:description" content="Interactive ROIC calculator showing how small revenue improvements can create outsized gross profit, ROIC, and payback from enterprise AI investment.">
+  <meta property="og:title" content="Revenue Intelligence Economic Multiplier | CFO Bridge">
+  <meta property="og:description" content="Interactive calculator showing gross contribution multiple, implied NPV, and Year-1 ROIC by industry profile.">
   <meta property="og:site_name" content="Gary Rikard">
   <meta property="og:locale" content="en_US">
-
-  <!-- X / Twitter preview metadata -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Revenue Intelligence Economic Multiplier | Gary Rikard">
-  <meta name="twitter:description" content="Interactive ROIC calculator for Revenue Intelligence and enterprise AI investment scenarios.">
-
-  <!-- Search-engine structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Revenue Intelligence Economic Multiplier",
-    "headline": "Revenue Intelligence Economic Multiplier",
-    "description": "Interactive ROIC calculator showing how Revenue Intelligence and enterprise AI investment scenarios translate into incremental revenue, gross profit, ROIC multiple, and payback period.",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "author": {
-      "@type": "Person",
-      "name": "Gary Rikard",
-      "sameAs": "https://www.linkedin.com/in/garyrikard"
-    },
-    "creator": {
-      "@type": "Person",
-      "name": "Gary Rikard",
-      "sameAs": "https://www.linkedin.com/in/garyrikard"
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Gary Rikard",
-      "sameAs": "https://www.linkedin.com/in/garyrikard"
-    },
-    "url": "https://grikard.github.io/revenue-intelligence-calculator/",
-    "inLanguage": "en",
-    "datePublished": "2026-05-06",
-    "dateModified": "2026-05-06",
-    "keywords": [
-      "Revenue Intelligence",
-      "AI ROI",
-      "ROIC",
-      "Enterprise AI",
-      "Workflow Economics",
-      "Salesforce",
-      "Agentforce",
-      "Data Cloud",
-      "Capital Allocation"
-    ]
-  }
-  </script>
+  <meta name="twitter:title" content="Revenue Intelligence Economic Multiplier | CFO Bridge">
+  <meta name="twitter:description" content="Interactive Revenue Intelligence calculator with industry profiles, NPV, and ROIC bridge.">
   <style>
     :root {
-      --color-background-primary: #ffffff;
-      --color-background-secondary: #f6f7f8;
-      --color-text-primary: #111827;
-      --color-text-secondary: #4b5563;
-      --color-text-tertiary: #6b7280;
-      --color-border-secondary: #d1d5db;
-      --color-border-tertiary: #e5e7eb;
-      --border-radius-md: 12px;
+      --navy: #102B5C;
+      --navy-deep: #071A38;
+      --paper: #F3F1EC;
+      --surface: #FFFFFF;
+      --surface-2: #F7F5EF;
+      --surface-3: #EEF4F1;
+      --border: rgba(17, 24, 39, 0.10);
+      --border-strong: rgba(17, 24, 39, 0.18);
+      --text: #111827;
+      --text-2: #4B5563;
+      --text-3: #7A7D85;
+      --teal: #1D9E75;
+      --teal-dark: #0F6E56;
+      --blue-dark: #185FA5;
+      --amber: #BA7517;
+      --purple-dark: #534AB7;
+      --red: #A32D2D;
+      --radius: 12px;
       --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --font-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-
     * { box-sizing: border-box; }
-
+    html, body { margin: 0; padding: 0; }
     body {
-      margin: 0;
-      padding: 24px;
-      background: var(--color-background-primary);
-      color: var(--color-text-primary);
+      background: #ffffff;
+      color: var(--text);
       font-family: var(--font-sans);
-    }
-
-    .ri-container {
-      max-width: 980px;
-      margin: 0 auto;
-      border: 1px solid var(--color-border-tertiary);
-      border-radius: 18px;
+      font-size: 15px;
+      line-height: 1.55;
       padding: 24px;
-      background: #fff;
-      box-shadow: 0 8px 30px rgba(17, 24, 39, 0.06);
     }
-
-    .ri-title {
-      margin: 0 0 6px;
-      font-size: 24px;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      font-weight: 650;
-    }
-
-    .ri-kicker {
-      margin: 0 0 20px;
-      font-size: 13px;
-      line-height: 1.5;
-      color: var(--color-text-secondary);
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
+    .page-shell {
+      max-width: 1220px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
       overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
+      box-shadow: 0 14px 36px rgba(17, 24, 39, 0.08);
     }
-
-    .ri-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
-    .ri-metric { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 14px; }
-    .ri-label { font-size: 11px; color: var(--color-text-tertiary); margin-bottom: 4px; }
-    .ri-val { font-size: 22px; font-weight: 600; color: var(--color-text-primary); }
-    .ri-sub { font-size: 11px; color: var(--color-text-secondary); margin-top: 2px; }
-    .ri-val.green { color: #0F6E56; }
-
-    .ctrl-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; font-size: 13px; color: var(--color-text-secondary); }
-    .ctrl-row label { min-width: 180px; }
-    .ctrl-row input[type=range] { flex: 1; accent-color: #0F6E56; }
-    .ctrl-out { min-width: 56px; text-align: right; font-weight: 600; color: var(--color-text-primary); }
-
-    .compare-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-bottom: 1.5rem; }
-    .compare-card { border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 12px; }
-    .compare-card.highlight { border: 1.5px solid #1D9E75; }
-    .compare-title { font-size: 11px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .05em; }
-    .compare-roic { font-size: 28px; font-weight: 650; margin-bottom: 4px; }
-    .compare-roic.c1 { color: #378ADD; }
-    .compare-roic.c2 { color: #1D9E75; }
-    .compare-roic.c3 { color: #534AB7; }
-    .compare-detail { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
-
-    .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 1.25rem 0; }
-    .section-label { font-size: 12px; font-weight: 650; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 10px; }
-
-    .reason-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-    .reason-card { border-left: 2px solid var(--color-border-secondary); padding: 10px 12px; background: var(--color-background-secondary); border-radius: 0 var(--border-radius-md) var(--border-radius-md) 0; }
-    .reason-title { font-size: 12px; font-weight: 650; color: var(--color-text-primary); margin-bottom: 4px; }
-    .reason-body { font-size: 11px; color: var(--color-text-secondary); line-height: 1.5; }
-
-    .math-row { background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 12px 16px; font-size: 12px; color: var(--color-text-secondary); margin-bottom: 1rem; font-family: var(--font-mono); overflow-x: auto; }
-
-
-    .author-footer {
-      margin-top: 18px;
-      padding: 14px 4px 0;
-      border-top: 1px solid var(--color-border-tertiary);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      color: var(--color-text-tertiary);
+    .hero {
+      padding: 30px 38px;
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+      color: #fff;
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      font-family: var(--font-mono);
       font-size: 11px;
-      line-height: 1.5;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #9FB5D6;
     }
-
-    .author-footer strong {
-      color: var(--color-text-primary);
-      font-weight: 650;
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      font-weight: 750;
+      max-width: 980px;
     }
-
-    .author-footer a {
-      color: var(--color-text-secondary);
-      text-decoration: underline;
-      text-underline-offset: 2px;
+    .hero p {
+      margin: 0;
+      max-width: 980px;
+      color: #C6D2E2;
+      font-size: 14px;
+      line-height: 1.65;
     }
-
-    @media (max-width: 760px) {
+    main { padding: 28px 38px 34px; }
+    .precision-note {
+      background: #FFF7ED;
+      border: 1px solid rgba(186,117,23,.28);
+      border-left: 4px solid var(--amber);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: var(--text-2);
+    }
+    .precision-note strong { color: var(--text); }
+    .section-label {
+      font-size: 12px;
+      font-weight: 780;
+      color: var(--text-2);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      margin: 24px 0 10px;
+    }
+    .industry-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .industry-pill {
+      appearance: none;
+      border: 1px solid var(--border-strong);
+      background: #fff;
+      color: var(--text-2);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all .12s ease;
+    }
+    .industry-pill:hover { border-color: var(--navy); color: var(--navy); }
+    .industry-pill.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+    .ramp-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+    .ramp-pill {
+      appearance: none;
+      border: 1px solid var(--border-strong);
+      background: #fff;
+      color: var(--text-2);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font: inherit;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all .12s ease;
+      min-width: 78px;
+    }
+    .ramp-pill:hover { border-color: var(--teal-dark); color: var(--teal-dark); }
+    .ramp-pill.active { background: var(--teal-dark); color: #fff; border-color: var(--teal-dark); }
+    .ramp-detail {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-2);
+      margin-bottom: 18px;
+      padding-left: 2px;
+    }
+    .ri-val-dual { display: flex; gap: 12px; align-items: baseline; line-height: 1.1; }
+    .ri-val-dual .pair { display: flex; flex-direction: column; gap: 1px; }
+    .ri-val-dual .dual-label { font-size: 9px; color: var(--text-3); text-transform: uppercase; letter-spacing: .03em; font-weight: 750; }
+    .ri-val-dual .dual-val { font-size: 17px; font-weight: 800; color: var(--blue-dark); }
+    .industry-summary {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) repeat(4, minmax(110px, .6fr));
+      gap: 10px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      margin-bottom: 18px;
+    }
+    .industry-summary .long { font-size: 13px; color: var(--text-2); line-height: 1.55; }
+    .summary-kpi { border-left: 1px solid var(--border); padding-left: 12px; }
+    .summary-kpi-label { font-size: 10px; text-transform: uppercase; letter-spacing: .05em; color: var(--text-3); font-weight: 750; margin-bottom: 3px; }
+    .summary-kpi-val { font-family: var(--font-mono); font-size: 13px; font-weight: 750; color: var(--text); }
+    .math-row {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 13px 16px;
+      font-size: 12px;
+      color: var(--text-2);
+      margin-bottom: 18px;
+      font-family: var(--font-mono);
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+    .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; margin-bottom: 22px; }
+    .ctrl-row { display: grid; grid-template-columns: minmax(170px, 230px) 1fr 82px; align-items: center; gap: 12px; font-size: 13px; color: var(--text-2); }
+    .ctrl-row label { color: var(--text); font-weight: 650; line-height: 1.35; }
+    .ctrl-row input[type=range] { width: 100%; accent-color: var(--teal-dark); }
+    .ctrl-out { text-align: right; font-family: var(--font-mono); font-weight: 750; color: var(--text); }
+    .ri-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-bottom: 22px; }
+    .ri-metric { background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 15px; }
+    .ri-label { font-size: 10.5px; color: var(--text-3); margin-bottom: 5px; text-transform: uppercase; letter-spacing: .04em; font-weight: 750; }
+    .ri-val { font-size: 22px; font-weight: 800; color: var(--text); line-height: 1.1; }
+    .ri-val.green { color: var(--teal-dark); }
+    .ri-val.blue { color: var(--blue-dark); }
+    .ri-val.purple { color: var(--purple-dark); }
+    .ri-sub { font-size: 11px; color: var(--text-2); margin-top: 4px; line-height: 1.35; }
+    .bridge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .bridge-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 15px; background: #fff; }
+    .bridge-title { font-size: 12px; font-weight: 780; margin-bottom: 8px; color: var(--text); }
+    .bridge-body { font-size: 12px; color: var(--text-2); line-height: 1.55; }
+    .bridge-body code { display: inline-block; background: var(--surface-2); padding: 2px 5px; border-radius: 5px; font-family: var(--font-mono); font-size: 11px; color: var(--text); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 22px; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 940px; }
+    th { background: var(--surface-2); color: var(--text-2); text-transform: uppercase; letter-spacing: .04em; font-size: 10px; text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    td { padding: 10px 12px; border-bottom: 1px solid var(--border); color: var(--text-2); vertical-align: top; }
+    tr:last-child td { border-bottom: none; }
+    td strong { color: var(--text); }
+    .reason-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .reason-card { border-left: 3px solid var(--border-strong); padding: 12px 14px; background: var(--surface-2); border-radius: 0 var(--radius) var(--radius) 0; }
+    .reason-title { font-size: 12px; font-weight: 780; color: var(--text); margin-bottom: 5px; }
+    .reason-body { font-size: 11px; color: var(--text-2); line-height: 1.55; }
+    footer { margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; color: var(--text-3); font-size: 11px; line-height: 1.5; }
+    footer strong { color: var(--text); }
+    footer a { color: var(--text-2); text-decoration: underline; text-underline-offset: 2px; }
+    @media (max-width: 1100px) {
+      .ri-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .industry-summary { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 820px) {
       body { padding: 12px; }
-      .ri-container { padding: 16px; }
-      .ri-grid, .compare-row, .reason-grid { grid-template-columns: 1fr; }
-      .ctrl-row { display: grid; grid-template-columns: 1fr; gap: 6px; }
-      .ctrl-row label, .ctrl-out { min-width: 0; text-align: left; }
-      .author-footer { flex-direction: column; align-items: flex-start; }
+      .page-shell { border-radius: 18px; }
+      .hero, main { padding-left: 22px; padding-right: 22px; }
+      .control-grid, .bridge-grid, .reason-grid { grid-template-columns: 1fr; }
+      .ctrl-row { grid-template-columns: 1fr; gap: 6px; }
+      .ctrl-out { text-align: left; }
+      .math-row { white-space: normal; }
+      .ri-grid { grid-template-columns: 1fr; }
+      .industry-summary { grid-template-columns: 1fr; }
+      .summary-kpi { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 8px; }
+    }
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 25px; }
+      .hero { padding-top: 24px; padding-bottom: 24px; }
+      main { padding-top: 22px; }
     }
   </style>
 </head>
 <body>
-  <main class="ri-container">
-    <h1 class="ri-title">Revenue Intelligence Economic Multiplier</h1>
-    <p class="ri-kicker">Interactive calculator showing ROIC at different revenue scales and improvement scenarios.</p>
-
-    <div class="math-row" id="formula-display">
-      ROIC = (Revenue base × Δ improvement × Gross margin) ÷ AI investment
-    </div>
-
-    <div class="ctrl-row"><label for="rev">Revenue base ($M)</label><input type="range" min="50" max="5000" step="50" value="500" id="rev" oninput="calc()"><span class="ctrl-out" id="rev-out">$500M</span></div>
-    <div class="ctrl-row"><label for="imp">Improvement lever (%)</label><input type="range" min="0.5" max="8" step="0.5" value="2" id="imp" oninput="calc()"><span class="ctrl-out" id="imp-out">2.0%</span></div>
-    <div class="ctrl-row"><label for="gm">Gross margin (%)</label><input type="range" min="30" max="85" step="5" value="70" id="gm" oninput="calc()"><span class="ctrl-out" id="gm-out">70%</span></div>
-    <div class="ctrl-row"><label for="inv">AI investment ($K)</label><input type="range" min="50" max="2000" step="50" value="200" id="inv" oninput="calc()"><span class="ctrl-out" id="inv-out">$200K</span></div>
-
-    <div class="ri-grid">
-      <div class="ri-metric"><div class="ri-label">Incremental revenue</div><div class="ri-val" id="inc-rev">$10.0M</div><div class="ri-sub">from improvement lever</div></div>
-      <div class="ri-metric"><div class="ri-label">Incremental gross profit</div><div class="ri-val" id="inc-gp">$7.0M</div><div class="ri-sub">revenue × margin</div></div>
-      <div class="ri-metric"><div class="ri-label">ROIC multiple</div><div class="ri-val green" id="roic-val">35×</div><div class="ri-sub">GP ÷ AI investment</div></div>
-      <div class="ri-metric"><div class="ri-label">Payback period</div><div class="ri-val" id="payback">~3 weeks</div><div class="ri-sub">assuming annual improvement</div></div>
-    </div>
-
-    <hr class="divider">
-
-    <div class="section-label">Cost displacement vs. Revenue Intelligence — the math comparison</div>
-
-    <div class="compare-row">
-      <div class="compare-card">
-        <div class="compare-title">Cost displacement</div>
-        <div class="compare-roic c1" id="cost-roic">8–12×</div>
-        <div class="compare-detail">Return = (human cost − AI cost) × volume<br>Ceiling is bounded by the labor cost you eliminate. A $5M headcount reduction generates at most $5M in savings — usually less after change management.</div>
+  <div class="page-shell">
+    <header class="hero">
+      <p class="eyebrow">Workflow Economics · Revenue Intelligence · CFO bridge</p>
+      <h1>Revenue Intelligence Economic Multiplier</h1>
+      <p>Measures the pre-tax gross contribution multiple created by AI-enabled revenue workflows, then bridges to implied Year-1 ROIC and multi-year NPV by industry profile. This is a capital-allocation instrument, not accounting ROIC.</p>
+    </header>
+    <main>
+      <div class="precision-note">
+        <strong>Finance precision:</strong> the headline output is a <strong>pre-tax economic multiplier</strong>, not accounting ROIC. The tool reports two ROIC views — <strong>Year-1 ROIC</strong> reflects the selected adoption ramp; <strong>Steady-state ROIC</strong> is the asset's earning capability at maturity. NPV uses discounted incremental FCF (assuming <strong>FCF ≈ NOPAT</strong>; working capital and incremental capex are not modeled). Adoption ramp defaults are set per industry; override below for deployment-specific planning.
       </div>
-      <div class="compare-card highlight">
-        <div class="compare-title">Revenue Intelligence <span style="font-size:10px;background:#E1F5EE;color:#0F6E56;padding:2px 6px;border-radius:4px;margin-left:4px">this model</span></div>
-        <div class="compare-roic c2" id="ri-roic">35×</div>
-        <div class="compare-detail">Return = revenue base × Δ improvement × margin<br>Ceiling scales with the revenue base. A 2% improvement on $500M creates the same GP as eliminating 70 senior engineers — at a fraction of the investment and the risk.</div>
+      <div class="section-label">Industry profile</div>
+      <div class="industry-pills" id="industry-pills"></div>
+      <div class="industry-summary" id="industry-summary"></div>
+      <div class="section-label">Adoption ramp to steady state</div>
+      <div class="ramp-pills" id="ramp-pills"></div>
+      <div class="ramp-detail" id="ramp-detail">Ramp: 30% → 55% → 75% → 90% → 100%</div>
+      <div class="math-row" id="formula-display">Economic Multiplier = (Revenue under influence × Improvement rate × Contribution margin × Realization factor) ÷ Initial AI investment</div>
+      <div class="control-grid">
+        <div class="ctrl-row"><label for="rev">Revenue under influence ($M)</label><input type="range" min="50" max="2000" step="50" value="1000" id="rev" aria-label="Revenue under influence in millions of dollars" oninput="calc()"><span class="ctrl-out" id="rev-out">$1.0B</span></div>
+        <div class="ctrl-row"><label for="imp">Improvement rate (%)</label><input type="range" min="0.25" max="8" step="0.25" value="1" id="imp" aria-label="Improvement rate as a percentage of revenue under influence" oninput="calc()"><span class="ctrl-out" id="imp-out">1.00%</span></div>
+        <div class="ctrl-row"><label for="cm">Contribution margin (%)</label><input type="range" min="15" max="85" step="5" value="55" id="cm" aria-label="Incremental contribution margin percentage" oninput="calc()"><span class="ctrl-out" id="cm-out">55%</span></div>
+        <div class="ctrl-row"><label for="rf">Realization factor (%)</label><input type="range" min="25" max="100" step="5" value="70" id="rf" aria-label="Realization factor percentage capturing adoption, data quality, and execution probability" oninput="calc()"><span class="ctrl-out" id="rf-out">70%</span></div>
+        <div class="ctrl-row"><label for="inv">All-in AI investment ($M)</label><input type="range" min="0.1" max="10" step="0.1" value="3" id="inv" aria-label="All-in AI investment in millions of dollars" oninput="calc()"><span class="ctrl-out" id="inv-out">$3.0M</span></div>
+        <div class="ctrl-row"><label for="recurring">Recurring AI cost (% of investment / yr)</label><input type="range" min="0" max="50" step="1" value="20" id="recurring" aria-label="Recurring annual AI cost as percentage of initial investment" oninput="calc()"><span class="ctrl-out" id="recurring-out">20%</span></div>
+        <div class="ctrl-row"><label for="tax">Tax rate (%)</label><input type="range" min="15" max="35" step="1" value="24" id="tax" aria-label="Corporate effective tax rate percentage" oninput="calc()"><span class="ctrl-out" id="tax-out">24%</span></div>
+        <div class="ctrl-row"><label for="wacc">WACC / discount rate (%)</label><input type="range" min="6" max="14" step="0.5" value="9" id="wacc" aria-label="Weighted average cost of capital or discount rate percentage" oninput="calc()"><span class="ctrl-out" id="wacc-out">9.0%</span></div>
+        <div class="ctrl-row"><label for="years">Value duration (years)</label><input type="range" min="3" max="7" step="1" value="5" id="years" aria-label="Value duration in years for NPV calculation" oninput="calc()"><span class="ctrl-out" id="years-out">5 yrs</span></div>
+        <div class="ctrl-row"><label for="growth">Annual benefit growth (%)</label><input type="range" min="-5" max="8" step="0.5" value="2" id="growth" aria-label="Annual benefit growth rate percentage applied to gross contribution" oninput="calc()"><span class="ctrl-out" id="growth-out">2.0%</span></div>
       </div>
-      <div class="compare-card">
-        <div class="compare-title">Compound effect (yr 3)</div>
-        <div class="compare-roic c3" id="compound-roic">94×</div>
-        <div class="compare-detail">Model learns from every deal. Predictions improve as CRM data compounds. Year 3 ROIC on the same investment if improvement lever grows from 2% to 5.4% through model maturation.</div>
+      <div class="ri-grid">
+        <div class="ri-metric"><div class="ri-label">Incremental revenue</div><div class="ri-val" id="inc-rev">$10.0M</div><div class="ri-sub">revenue under influence × improvement</div></div>
+        <div class="ri-metric"><div class="ri-label">Gross contribution</div><div class="ri-val" id="inc-contrib">$3.85M</div><div class="ri-sub">after margin and realization</div></div>
+        <div class="ri-metric"><div class="ri-label">Economic multiplier</div><div class="ri-val green" id="mult-val">1.28×</div><div class="ri-sub">gross contribution ÷ initial investment</div></div>
+        <div class="ri-metric"><div class="ri-label">Implied ROIC</div><div class="ri-val-dual"><div class="pair"><span class="dual-label">Year 1</span><span class="dual-val" id="roic-y1">14%</span></div><div class="pair"><span class="dual-label">Steady</span><span class="dual-val" id="roic-ss">82%</span></div></div><div class="ri-sub">incremental NOPAT ÷ initial investment</div></div>
+        <div class="ri-metric"><div class="ri-label">Implied NPV</div><div class="ri-val purple" id="npv-val">$3.2M</div><div class="ri-sub">simplified FCF ≈ NOPAT, ramp applied</div></div>
+        <div class="ri-metric"><div class="ri-label">Payback</div><div class="ri-val" id="payback">~22 months</div><div class="ri-sub">cumulative gross contribution, ramp applied</div></div>
       </div>
-    </div>
-
-    <hr class="divider">
-
-    <div class="section-label">Why companies will invest — six structural reasons</div>
-
-    <div class="reason-grid">
-      <div class="reason-card">
-        <div class="reason-title">The asymmetric investment threshold</div>
-        <div class="reason-body">AI investment is ~0.02–0.1% of the revenue base it improves. No other capital allocation decision in a CFO's budget produces this ratio. A $200K AI investment that moves a $500M revenue base by 2% is structurally incomparable to any headcount or infrastructure decision.</div>
+      <div class="section-label">CFO-grade bridge</div>
+      <div class="bridge-grid">
+        <div class="bridge-card"><div class="bridge-title">Calculator formula</div><div class="bridge-body"><code>Economic Multiplier = (Revenue under influence × Improvement rate × Contribution margin × Realization factor) ÷ Initial AI investment</code></div></div>
+        <div class="bridge-card"><div class="bridge-title">Finance-grade value bridge</div><div class="bridge-body"><code>Incremental NOPAT_t = [(Gross contribution_t − Recurring AI cost) × (1 − Tax rate)]</code><br><br><code>NPV = −I0 + Σ [Incremental FCF_t ÷ (1 + WACC)^t]</code></div></div>
       </div>
-      <div class="reason-card">
-        <div class="reason-title">Competitive pressure is non-optional</div>
-        <div class="reason-body">If a competitor improves pipeline conversion by 3% and you don't, you don't just lose the 3% delta — you lose market share compoundingly. Revenue Intelligence is not an optional efficiency gain; it is a competitive response requirement once peers adopt it.</div>
+      <div class="section-label">Industry default profile outputs</div>
+      <div class="table-wrap">
+        <table id="industry-table">
+          <thead><tr><th>Industry</th><th>Revenue under influence</th><th>Improvement</th><th>Contribution margin</th><th>AI investment</th><th>Ramp</th><th>Multiplier</th><th>Y1 ROIC</th><th>SS ROIC</th><th>NPV</th></tr></thead>
+          <tbody></tbody>
+        </table>
       </div>
-      <div class="reason-card">
-        <div class="reason-title">Inside the AI capability boundary</div>
-        <div class="reason-body">Pattern recognition in CRM data — lead scoring, churn signals, pipeline velocity — is firmly inside the jagged frontier. High-volume, structured, historical transaction data is exactly what AI excels at.</div>
+      <div class="section-label">Interpretation discipline</div>
+      <div class="reason-grid">
+        <div class="reason-card"><div class="reason-title">Revenue denominator</div><div class="reason-body">The multiplier can be large because small improvements are applied to a large revenue base. Only include revenue actually influenced by the AI workflow.</div></div>
+        <div class="reason-card"><div class="reason-title">Realization matters</div><div class="reason-body">The realization factor captures adoption, data quality, workflow fit, change friction, and execution probability. This is where CFO skepticism should enter first.</div></div>
+        <div class="reason-card"><div class="reason-title">Contribution margin, not gross margin</div><div class="reason-body">Use incremental contribution margin after direct costs and variable GTM costs. Avoid using corporate gross margin unless it is a defensible proxy.</div></div>
+        <div class="reason-card"><div class="reason-title">Two ROIC views, both honest</div><div class="reason-body">Year-1 ROIC reflects the selected adoption ramp and is the number a CFO can defend against year-end actuals. Steady-state ROIC is the asset's earning capability at maturity. Either figure alone is misleading; the spread between them is the conversation.</div></div>
       </div>
-      <div class="reason-card">
-        <div class="reason-title">Data compounding creates a moat</div>
-        <div class="reason-body">Revenue Intelligence models improve with every deal closed, every customer churned, every price accepted or rejected. Early adopters accumulate a data advantage that late adopters cannot purchase.</div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-title">CFO pressure on growth efficiency</div>
-        <div class="reason-body">Revenue Intelligence improves revenue-per-GTM-dollar efficiency: same sales team, same go-to-market investment, better allocation of effort against the highest-probability revenue.</div>
-      </div>
-      <div class="reason-card">
-        <div class="reason-title">Salesforce Data Cloud as the infrastructure</div>
-        <div class="reason-body">Data Cloud unifies the customer data Revenue Intelligence requires — transaction history, engagement signals, and segment data. Revenue Intelligence is the activation layer, not the foundation build.</div>
-      </div>
-    </div>
-
-    <footer class="author-footer">
-      <div><strong>Gary Rikard, MBA</strong> · Workflow Economics series · Revenue Intelligence</div>
-      <div><a href="https://www.linkedin.com/in/garyrikard" target="_blank" rel="noopener noreferrer">LinkedIn: garyrikard</a></div>
-    </footer>
-  </main>
-
+      <footer>
+        <div><strong>Gary Rikard, MBA</strong> · Workflow Economics series · Revenue Intelligence Economic Multiplier · MIT License</div>
+        <div><a href="https://www.linkedin.com/in/garyrikard" target="_blank" rel="noopener noreferrer">LinkedIn: garyrikard</a></div>
+        <div style="flex-basis: 100%; padding-top: 8px; border-top: 1px dashed var(--border); margin-top: 4px;">Empirical foundation: Kim, Kim, and Koning, <em>Mapping AI Into Production</em> (INSEAD / Harvard Business School working paper, 2026). The realization factor is calibrated against the field-measured gap between pilot promise and production delivery documented in that work.</div>
+      </footer>
+    </main>
+  </div>
   <script>
-    function calc() {
-      const rev = +document.getElementById('rev').value;
-      const imp = +document.getElementById('imp').value / 100;
-      const gm = +document.getElementById('gm').value / 100;
-      const invK = +document.getElementById('inv').value;
-      const inv = invK * 1000;
-
-      document.getElementById('rev-out').textContent = '$' + rev + 'M';
-      document.getElementById('imp-out').textContent = (+document.getElementById('imp').value).toFixed(1) + '%';
-      document.getElementById('gm-out').textContent = document.getElementById('gm').value + '%';
-      document.getElementById('inv-out').textContent = '$' + invK + 'K';
-
-      const incRev = rev * imp;
-      const incGP = incRev * gm;
-      const roic = Math.max(1, Math.round(incGP * 1000000 / inv));
-      const paybackDays = Math.round(365 / roic);
-
-      document.getElementById('inc-rev').textContent = '$' + incRev.toFixed(1) + 'M';
-      document.getElementById('inc-gp').textContent = '$' + incGP.toFixed(1) + 'M';
-      document.getElementById('roic-val').textContent = roic + '×';
-      document.getElementById('ri-roic').textContent = roic + '×';
-
-      const paybackText = paybackDays < 7 ? '< 1 week' :
-                          paybackDays < 30 ? '~' + Math.round(paybackDays / 7) + ' weeks' :
-                          '~' + Math.round(paybackDays / 30) + ' months';
-      document.getElementById('payback').textContent = paybackText;
-
-      const compoundImp = imp * Math.pow(1.35, 3);
-      const compoundROIC = Math.round((rev * compoundImp * gm * 1000000) / inv);
-      document.getElementById('compound-roic').textContent = compoundROIC + '×';
-
-      document.getElementById('formula-display').textContent =
-        'ROIC = ($' + rev + 'M × ' + (imp * 100).toFixed(1) + '% × ' + Math.round(gm * 100) + '%) ÷ $' +
-        invK + 'K = ' + roic + '×';
+    const profiles = {
+      "Consumer Goods": {"revenue": 900, "improvement": 1.0, "margin": 30, "realization": 65, "investment": 3500, "recurring": 22, "tax": 24, "wacc": 8.5, "years": 5, "growth": 1.5, "ramp": 3, "useCase": "trade promotion, retailer service, category intelligence, pricing and promotion analytics"},
+      "Energy & Utilities": {"revenue": 1500, "improvement": 0.5, "margin": 30, "realization": 60, "investment": 6000, "recurring": 18, "tax": 24, "wacc": 7.5, "years": 5, "growth": 1, "ramp": 5, "useCase": "large account renewals, demand response programs, customer operations, field scheduling"},
+      "Financial Services": {"revenue": 1000, "improvement": 1.0, "margin": 55, "realization": 70, "investment": 3000, "recurring": 20, "tax": 24, "wacc": 9, "years": 5, "growth": 2, "ramp": 5, "useCase": "pricing, retention, advisor productivity, renewal quality, fraud / leakage triage"},
+      "High Tech": {"revenue": 1000, "improvement": 2.0, "margin": 70, "realization": 75, "investment": 4000, "recurring": 25, "tax": 21, "wacc": 11, "years": 5, "growth": 4, "ramp": 3, "useCase": "usage expansion, renewal intelligence, pricing yield, product-led growth signals"},
+      "Life Sciences": {"revenue": 800, "improvement": 1.0, "margin": 60, "realization": 65, "investment": 4000, "recurring": 22, "tax": 21, "wacc": 8.5, "years": 5, "growth": 2, "ramp": 5, "useCase": "HCP targeting, field force productivity, medical inquiry routing, account planning"},
+      "Manufacturing": {"revenue": 1200, "improvement": 0.75, "margin": 35, "realization": 65, "investment": 5000, "recurring": 20, "tax": 24, "wacc": 9.5, "years": 5, "growth": 1.5, "ramp": 3, "useCase": "quote quality, channel pricing, order configuration, service contract renewal"},
+      "Media": {"revenue": 500, "improvement": 2.0, "margin": 45, "realization": 70, "investment": 2500, "recurring": 25, "tax": 24, "wacc": 10, "years": 5, "growth": 3, "ramp": 3, "useCase": "ad yield, audience intelligence, churn reduction, content packaging, campaign lift"},
+      "Mobility / Auto": {"revenue": 1500, "improvement": 0.75, "margin": 25, "realization": 60, "investment": 6000, "recurring": 22, "tax": 24, "wacc": 10, "years": 5, "growth": 2, "ramp": 3, "useCase": "dealer conversion, connected services, fleet retention, service contract attach"},
+      "Oil & Gas": {"revenue": 2000, "improvement": 0.5, "margin": 40, "realization": 55, "investment": 7500, "recurring": 18, "tax": 25, "wacc": 10.5, "years": 5, "growth": 1.5, "ramp": 5, "useCase": "commercial optimization, contract leakage, trading support, field-service revenue"}
+    };
+    const rampCurves = {
+      1: [1.0],
+      3: [0.5, 0.8, 1.0],
+      5: [0.3, 0.55, 0.75, 0.9, 1.0]
+    };
+    function getRampPct(rampYears, year) {
+      const curve = rampCurves[rampYears] || rampCurves[3];
+      if (year > curve.length) return 1.0;
+      return curve[year - 1];
     }
+    function rampDetailText(rampYears) {
+      if (rampYears === 1) return 'Year 1+ modeled at steady state (no ramp applied)';
+      const curve = rampCurves[rampYears];
+      const pcts = curve.map(v => Math.round(v * 100) + '%').join(' → ');
+      const tail = rampYears < 7 ? ` (Y${rampYears + 1}+ at steady state)` : '';
+      return `Ramp: ${pcts}${tail}`;
+    }
+    let selectedRamp = 3;
+    let selectedIndustry = "Financial Services";
 
-    calc();
+    function moneyM(value) {
+      const sign = value < 0 ? '-' : '';
+      const abs = Math.abs(value);
+      if (abs >= 1000) return sign + '$' + (abs / 1000).toFixed(abs >= 10000 ? 0 : 1) + 'B';
+      if (abs >= 10) return sign + '$' + abs.toFixed(1) + 'M';
+      return sign + '$' + abs.toFixed(2) + 'M';
+    }
+    function moneyInvestment(valueM) {
+      if (valueM >= 1) return '$' + valueM.toFixed(1) + 'M';
+      return '$' + (valueM * 1000).toFixed(0) + 'K';
+    }
+    function fmtMultiplier(v) {
+      if (!isFinite(v)) return 'n/a';
+      if (v >= 10) return v.toFixed(1) + '×';
+      if (v >= 1) return v.toFixed(2) + '×';
+      return v.toFixed(2) + '×';
+    }
+    function fmtPct(v) {
+      if (!isFinite(v)) return 'n/a';
+      return Math.round(v) + '%';
+    }
+    function fmtPaybackWeeks(weeks) {
+      if (!isFinite(weeks) || weeks < 0) return 'n/a';
+      if (weeks < 1) return '< 1 week';
+      if (weeks < 8) return '~' + weeks.toFixed(1) + ' weeks';
+      if (weeks < 130) return '~' + (weeks / 4.345).toFixed(1) + ' months';
+      return '~' + (weeks / 52).toFixed(1) + ' years';
+    }
+    function compute(p) {
+      const rev = +p.revenue;
+      const imp = +p.improvement / 100;
+      const cm = +p.margin / 100;
+      const rf = +p.realization / 100;
+      const invM = +p.investment / 1000;
+      const recurringM = invM * (+p.recurring / 100);
+      const tax = +p.tax / 100;
+      const wacc = +p.wacc / 100;
+      const years = +p.years;
+      const growth = +p.growth / 100;
+      const rampYears = +p.ramp || selectedRamp;
+      const incRevM = rev * imp;
+      const grossContributionM = incRevM * cm * rf;
+      const multiplier = grossContributionM / invM;
+      const y1RampPct = getRampPct(rampYears, 1);
+      const y1BenefitM = grossContributionM * y1RampPct;
+      const y1NOPATM = (y1BenefitM - recurringM) * (1 - tax);
+      const y1ROIC = y1NOPATM / invM;
+      const ssNOPATM = (grossContributionM - recurringM) * (1 - tax);
+      const ssROIC = ssNOPATM / invM;
+      let npvM = -invM;
+      let cumulativeGross = 0;
+      let paybackYears = null;
+      for (let t = 1; t <= years; t++) {
+        const rampPct = getRampPct(rampYears, t);
+        const benefitM = grossContributionM * rampPct * Math.pow(1 + growth, t - 1);
+        const nopatM = (benefitM - recurringM) * (1 - tax);
+        npvM += nopatM / Math.pow(1 + wacc, t);
+        if (paybackYears === null) {
+          if (cumulativeGross + benefitM >= invM) {
+            const remaining = invM - cumulativeGross;
+            paybackYears = (t - 1) + (remaining / benefitM);
+          } else {
+            cumulativeGross += benefitM;
+          }
+        }
+      }
+      const paybackWeeks = paybackYears !== null ? paybackYears * 52 : Infinity;
+      return { incRevM, grossContributionM, multiplier, y1ROIC, ssROIC, npvM, paybackWeeks, recurringM, rampYears };
+    }
+    function setInput(id, value) { document.getElementById(id).value = value; }
+    function loadIndustry(name) {
+      selectedIndustry = name;
+      const p = profiles[name];
+      setInput('rev', p.revenue);
+      setInput('imp', p.improvement);
+      setInput('cm', p.margin);
+      setInput('rf', p.realization);
+      setInput('inv', p.investment / 1000);
+      setInput('recurring', p.recurring);
+      setInput('tax', p.tax);
+      setInput('wacc', p.wacc);
+      setInput('years', p.years);
+      setInput('growth', p.growth);
+      selectedRamp = p.ramp || 3;
+      document.querySelectorAll('.industry-pill').forEach(btn => btn.classList.toggle('active', btn.dataset.industry === name));
+      document.querySelectorAll('.ramp-pill').forEach(btn => btn.classList.toggle('active', +btn.dataset.ramp === selectedRamp));
+      calc();
+    }
+    function loadRamp(years) {
+      selectedRamp = +years;
+      document.querySelectorAll('.ramp-pill').forEach(btn => btn.classList.toggle('active', +btn.dataset.ramp === selectedRamp));
+      calc();
+    }
+    function renderPills() {
+      const holder = document.getElementById('industry-pills');
+      holder.innerHTML = '';
+      Object.keys(profiles).forEach(name => {
+        const btn = document.createElement('button');
+        btn.className = 'industry-pill';
+        btn.dataset.industry = name;
+        btn.textContent = name;
+        btn.onclick = () => loadIndustry(name);
+        holder.appendChild(btn);
+      });
+    }
+    function renderRampPills() {
+      const holder = document.getElementById('ramp-pills');
+      holder.innerHTML = '';
+      [1, 3, 5].forEach(years => {
+        const btn = document.createElement('button');
+        btn.className = 'ramp-pill';
+        btn.dataset.ramp = years;
+        btn.textContent = years + '-year';
+        btn.onclick = () => loadRamp(years);
+        holder.appendChild(btn);
+      });
+    }
+    function renderIndustrySummary(p, results) {
+      document.getElementById('industry-summary').innerHTML = `
+        <div class="long"><strong>${selectedIndustry}</strong><br>${p.useCase}<br><span style="color:var(--text-3)">Illustrative profile; replace with client-specific telemetry before investment approval.</span></div>
+        <div class="summary-kpi"><div class="summary-kpi-label">WACC</div><div class="summary-kpi-val">${(+p.wacc).toFixed(1)}%</div></div>
+        <div class="summary-kpi"><div class="summary-kpi-label">Tax rate</div><div class="summary-kpi-val">${p.tax}%</div></div>
+        <div class="summary-kpi"><div class="summary-kpi-label">Recurring cost</div><div class="summary-kpi-val">${p.recurring}% / yr</div></div>
+        <div class="summary-kpi"><div class="summary-kpi-label">Value duration</div><div class="summary-kpi-val">${p.years} yrs</div></div>`;
+    }
+    function calc() {
+      const p = {
+        revenue: +document.getElementById('rev').value,
+        improvement: +document.getElementById('imp').value,
+        margin: +document.getElementById('cm').value,
+        realization: +document.getElementById('rf').value,
+        investment: +document.getElementById('inv').value * 1000,
+        recurring: +document.getElementById('recurring').value,
+        tax: +document.getElementById('tax').value,
+        wacc: +document.getElementById('wacc').value,
+        years: +document.getElementById('years').value,
+        growth: +document.getElementById('growth').value,
+        ramp: selectedRamp,
+        useCase: profiles[selectedIndustry].useCase
+      };
+      document.getElementById('rev-out').textContent = moneyM(p.revenue);
+      document.getElementById('imp-out').textContent = p.improvement.toFixed(2) + '%';
+      document.getElementById('cm-out').textContent = p.margin + '%';
+      document.getElementById('rf-out').textContent = p.realization + '%';
+      document.getElementById('inv-out').textContent = moneyInvestment(p.investment / 1000);
+      document.getElementById('recurring-out').textContent = p.recurring + '%';
+      document.getElementById('tax-out').textContent = p.tax + '%';
+      document.getElementById('wacc-out').textContent = p.wacc.toFixed(1) + '%';
+      document.getElementById('years-out').textContent = p.years + ' yrs';
+      document.getElementById('growth-out').textContent = p.growth.toFixed(1) + '%';
+      const r = compute(p);
+      document.getElementById('inc-rev').textContent = moneyM(r.incRevM);
+      document.getElementById('inc-contrib').textContent = moneyM(r.grossContributionM);
+      document.getElementById('mult-val').textContent = fmtMultiplier(r.multiplier);
+      document.getElementById('roic-y1').textContent = fmtPct(r.y1ROIC * 100);
+      document.getElementById('roic-ss').textContent = fmtPct(r.ssROIC * 100);
+      document.getElementById('npv-val').textContent = moneyM(r.npvM);
+      document.getElementById('payback').textContent = fmtPaybackWeeks(r.paybackWeeks);
+      document.getElementById('formula-display').textContent =
+        'Economic Multiplier = (' + moneyM(p.revenue) + ' × ' + p.improvement.toFixed(2) + '% × ' + p.margin + '% × ' + p.realization + '%) ÷ ' + moneyInvestment(p.investment / 1000) + ' = ' + fmtMultiplier(r.multiplier);
+      document.getElementById('ramp-detail').textContent = rampDetailText(selectedRamp);
+      renderIndustrySummary(p, r);
+    }
+    function renderIndustryTable() {
+      const tbody = document.querySelector('#industry-table tbody');
+      tbody.innerHTML = '';
+      Object.entries(profiles).forEach(([name, p]) => {
+        const r = compute(p);
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${name}</strong></td>
+          <td>${moneyM(p.revenue)}</td>
+          <td>${(+p.improvement).toFixed(2)}%</td>
+          <td>${p.margin}%</td>
+          <td>${moneyInvestment(p.investment / 1000)}</td>
+          <td>${p.ramp}y</td>
+          <td><strong>${fmtMultiplier(r.multiplier)}</strong></td>
+          <td><strong>${fmtPct(r.y1ROIC * 100)}</strong></td>
+          <td><strong>${fmtPct(r.ssROIC * 100)}</strong></td>
+          <td><strong>${moneyM(r.npvM)}</strong></td>`;
+        tbody.appendChild(tr);
+      });
+    }
+    renderPills();
+    renderRampPills();
+    renderIndustryTable();
+    loadIndustry('Financial Services');
   </script>
 </body>
 </html>
