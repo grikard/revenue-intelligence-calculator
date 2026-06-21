@@ -254,7 +254,7 @@
       <div class="ramp-detail" id="ramp-detail">Ramp: 30% → 55% → 75% → 90% → 100%</div>
       <div class="math-row" id="formula-display">Economic Multiplier = (Revenue under influence × Improvement rate × Contribution margin × Realization factor) ÷ Initial AI investment</div>
       <div class="control-grid">
-        <div class="ctrl-row"><label for="rev">Revenue under influence ($M)</label><input type="range" min="50" max="2000" step="50" value="1000" id="rev" aria-label="Revenue under influence in millions of dollars" oninput="calc()"><span class="ctrl-out" id="rev-out">$1.0B</span></div>
+        <div class="ctrl-row"><label for="rev">Revenue under influence ($M)</label><input type="range" min="50" max="3000" step="50" value="1000" id="rev" aria-label="Revenue under influence in millions of dollars" oninput="calc()"><span class="ctrl-out" id="rev-out">$1.0B</span></div>
         <div class="ctrl-row"><label for="imp">Improvement rate (%)</label><input type="range" min="0.25" max="8" step="0.25" value="1" id="imp" aria-label="Improvement rate as a percentage of revenue under influence" oninput="calc()"><span class="ctrl-out" id="imp-out">1.00%</span></div>
         <div class="ctrl-row"><label for="cm">Contribution margin (%)</label><input type="range" min="15" max="85" step="5" value="55" id="cm" aria-label="Incremental contribution margin percentage" oninput="calc()"><span class="ctrl-out" id="cm-out">55%</span></div>
         <div class="ctrl-row"><label for="rf">Realization factor (%)</label><input type="range" min="25" max="100" step="5" value="70" id="rf" aria-label="Realization factor percentage capturing adoption, data quality, and execution probability" oninput="calc()"><span class="ctrl-out" id="rf-out">70%</span></div>
@@ -271,7 +271,7 @@
         <div class="ri-metric"><div class="ri-label">Economic multiplier</div><div class="ri-val green" id="mult-val">1.28×</div><div class="ri-sub">gross contribution ÷ initial investment</div></div>
         <div class="ri-metric"><div class="ri-label">Implied ROIC</div><div class="ri-val-dual"><div class="pair"><span class="dual-label">Year 1</span><span class="dual-val" id="roic-y1">14%</span></div><div class="pair"><span class="dual-label">Steady</span><span class="dual-val" id="roic-ss">82%</span></div></div><div class="ri-sub">incremental NOPAT ÷ initial investment</div></div>
         <div class="ri-metric"><div class="ri-label">Implied NPV</div><div class="ri-val purple" id="npv-val">$3.2M</div><div class="ri-sub">simplified FCF ≈ NOPAT, ramp applied</div></div>
-        <div class="ri-metric"><div class="ri-label">Payback</div><div class="ri-val" id="payback">~22 months</div><div class="ri-sub">cumulative gross contribution, ramp applied</div></div>
+        <div class="ri-metric"><div class="ri-label">Payback</div><div class="ri-val" id="payback">~22 months</div><div class="ri-sub">cumulative contribution net of recurring AI cost, ramp applied</div></div>
       </div>
       <div class="section-label">CFO-grade bridge</div>
       <div class="bridge-grid">
@@ -285,32 +285,35 @@
           <tbody></tbody>
         </table>
       </div>
+      <p style="font-size:12px; color:var(--text-3); margin: 8px 2px 0;">Verticals marked below the single-workflow hurdle show negative economics at workflow #1 scope under conservative defaults. The portfolio multiplier — foundation pod IP paid once, reused across workflows — is what changes the answer; see the companion framework, Panel 5.</p>
       <div class="section-label">Interpretation discipline</div>
       <div class="reason-grid">
         <div class="reason-card"><div class="reason-title">Revenue denominator</div><div class="reason-body">The multiplier can be large because small improvements are applied to a large revenue base. Only include revenue actually influenced by the AI workflow.</div></div>
         <div class="reason-card"><div class="reason-title">Realization matters</div><div class="reason-body">The realization factor captures adoption, data quality, workflow fit, change friction, and execution probability. This is where CFO skepticism should enter first.</div></div>
         <div class="reason-card"><div class="reason-title">Contribution margin, not gross margin</div><div class="reason-body">Use incremental contribution margin after direct costs and variable GTM costs. Avoid using corporate gross margin unless it is a defensible proxy.</div></div>
-        <div class="reason-card"><div class="reason-title">Two ROIC views, both honest</div><div class="reason-body">Year-1 ROIC reflects the selected adoption ramp and is the number a CFO can defend against year-end actuals. Steady-state ROIC is the asset's earning capability at maturity. Either figure alone is misleading; the spread between them is the conversation.</div></div>
+        <div class="reason-card"><div class="reason-title">Below-hurdle verticals stay visible</div><div class="reason-body">Three industry profiles show negative NPV at single-workflow scope. That is the model working, not failing: in low-margin, low-improvement-rate verticals, one workflow cannot carry the full foundation investment. The capital case in these sectors rests on portfolio economics — the multiplier the companion framework models — not on tuning single-workflow inputs until they turn positive.</div></div>
+        <div class="reason-card"><div class="reason-title">Two ROIC views</div><div class="reason-body">Year-1 ROIC reflects the selected adoption ramp and is the number a CFO can defend against year-end actuals. Steady-state ROIC is the asset's earning capability at maturity. Either figure alone is misleading; the spread between them is the conversation.</div></div>
       </div>
       <footer>
         <div><strong>Gary Rikard, MBA</strong> · Workflow Economics series · Revenue Intelligence Economic Multiplier · MIT License</div>
         <div><a href="https://www.linkedin.com/in/garyrikard" target="_blank" rel="noopener noreferrer">LinkedIn: garyrikard</a></div>
         <div style="flex-basis: 100%; padding-top: 8px; border-top: 1px dashed var(--border); margin-top: 4px;">Empirical foundation: Kim, Kim, and Koning, <em>Mapping AI Into Production</em> (INSEAD / Harvard Business School working paper, 2026). The realization factor is calibrated against the field-measured gap between pilot promise and production delivery documented in that work.</div>
-        <div style="flex-basis: 100%; padding-top: 8px; border-top: 1px dashed var(--border); margin-top: 4px;">Companion artifacts: <a href="https://grikard.github.io/revenue-intelligence-framework/" target="_blank" rel="noopener noreferrer">Revenue Intelligence Amplification Framework</div>
+        <div style="flex-basis: 100%; padding-top: 8px; border-top: 1px dashed var(--border); margin-top: 4px;">Companion artifacts: <a href="https://grikard.github.io/revenue-intelligence-framework/" target="_blank" rel="noopener noreferrer">Revenue Intelligence Amplification Framework</a></div>
       </footer>
     </main>
   </div>
   <script>
     const profiles = {
-      "Consumer Goods": {"revenue": 900, "improvement": 1.0, "margin": 30, "realization": 65, "investment": 3500, "recurring": 22, "tax": 24, "wacc": 8.5, "years": 5, "growth": 1.5, "ramp": 3, "useCase": "trade promotion, retailer service, category intelligence, pricing and promotion analytics"},
-      "Energy & Utilities": {"revenue": 1500, "improvement": 0.5, "margin": 30, "realization": 60, "investment": 6000, "recurring": 18, "tax": 24, "wacc": 7.5, "years": 5, "growth": 1, "ramp": 5, "useCase": "large account renewals, demand response programs, customer operations, field scheduling"},
+      "Consumer Goods": {"revenue": 1400, "improvement": 1.0, "margin": 30, "realization": 65, "investment": 3500, "recurring": 22, "tax": 24, "wacc": 8.5, "years": 5, "growth": 1.5, "ramp": 3, "useCase": "trade promotion, retailer service, category intelligence, pricing and promotion analytics"},
+      "Energy & Utilities": {"revenue": 1500, "improvement": 0.5, "margin": 30, "realization": 60, "investment": 6000, "recurring": 18, "tax": 24, "wacc": 7.5, "years": 5, "growth": 1, "ramp": 5, "belowHurdle": true, "useCase": "large account renewals, demand response programs, customer operations, field scheduling"},
       "Financial Services": {"revenue": 1000, "improvement": 1.0, "margin": 55, "realization": 70, "investment": 3000, "recurring": 20, "tax": 24, "wacc": 9, "years": 5, "growth": 2, "ramp": 5, "useCase": "pricing, retention, advisor productivity, renewal quality, fraud / leakage triage"},
       "High Tech": {"revenue": 1000, "improvement": 2.0, "margin": 70, "realization": 75, "investment": 4000, "recurring": 25, "tax": 21, "wacc": 11, "years": 5, "growth": 4, "ramp": 3, "useCase": "usage expansion, renewal intelligence, pricing yield, product-led growth signals"},
-      "Life Sciences": {"revenue": 800, "improvement": 1.0, "margin": 60, "realization": 65, "investment": 4000, "recurring": 22, "tax": 21, "wacc": 8.5, "years": 5, "growth": 2, "ramp": 5, "useCase": "HCP targeting, field force productivity, medical inquiry routing, account planning"},
-      "Manufacturing": {"revenue": 1200, "improvement": 0.75, "margin": 35, "realization": 65, "investment": 5000, "recurring": 20, "tax": 24, "wacc": 9.5, "years": 5, "growth": 1.5, "ramp": 3, "useCase": "quote quality, channel pricing, order configuration, service contract renewal"},
+      "MedTech": {"revenue": 1200, "improvement": 1.0, "margin": 55, "realization": 65, "investment": 4000, "recurring": 22, "tax": 21, "wacc": 9, "years": 5, "growth": 2, "ramp": 5, "useCase": "quote and configuration quality, contract pricing leakage, service contract renewal, capital-plus-consumables account expansion"},
+      "Pharma & Biotech": {"revenue": 1000, "improvement": 1.0, "margin": 60, "realization": 65, "investment": 4000, "recurring": 22, "tax": 21, "wacc": 8.5, "years": 5, "growth": 2, "ramp": 5, "useCase": "HCP targeting, field force productivity, medical inquiry routing, account planning"},
+      "Manufacturing": {"revenue": 2000, "improvement": 0.75, "margin": 35, "realization": 65, "investment": 5000, "recurring": 20, "tax": 24, "wacc": 9.5, "years": 5, "growth": 1.5, "ramp": 3, "useCase": "quote quality, channel pricing, order configuration, service contract renewal"},
       "Media": {"revenue": 500, "improvement": 2.0, "margin": 45, "realization": 70, "investment": 2500, "recurring": 25, "tax": 24, "wacc": 10, "years": 5, "growth": 3, "ramp": 3, "useCase": "ad yield, audience intelligence, churn reduction, content packaging, campaign lift"},
-      "Mobility / Auto": {"revenue": 1500, "improvement": 0.75, "margin": 25, "realization": 60, "investment": 6000, "recurring": 22, "tax": 24, "wacc": 10, "years": 5, "growth": 2, "ramp": 3, "useCase": "dealer conversion, connected services, fleet retention, service contract attach"},
-      "Oil & Gas": {"revenue": 2000, "improvement": 0.5, "margin": 40, "realization": 55, "investment": 7500, "recurring": 18, "tax": 25, "wacc": 10.5, "years": 5, "growth": 1.5, "ramp": 5, "useCase": "commercial optimization, contract leakage, trading support, field-service revenue"}
+      "Mobility / Auto": {"revenue": 1500, "improvement": 0.75, "margin": 25, "realization": 60, "investment": 6000, "recurring": 22, "tax": 24, "wacc": 10, "years": 5, "growth": 2, "ramp": 3, "belowHurdle": true, "useCase": "dealer conversion, connected services, fleet retention, service contract attach"},
+      "Oil & Gas": {"revenue": 2000, "improvement": 0.5, "margin": 40, "realization": 55, "investment": 7500, "recurring": 18, "tax": 25, "wacc": 10.5, "years": 5, "growth": 1.5, "ramp": 5, "belowHurdle": true, "useCase": "commercial optimization, contract leakage, trading support, field-service revenue"}
     };
     const rampCurves = {
       1: [1.0],
@@ -389,12 +392,13 @@
         const benefitM = grossContributionM * rampPct * Math.pow(1 + growth, t - 1);
         const nopatM = (benefitM - recurringM) * (1 - tax);
         npvM += nopatM / Math.pow(1 + wacc, t);
+        const netBenefitM = benefitM - recurringM;
         if (paybackYears === null) {
-          if (cumulativeGross + benefitM >= invM) {
+          if (netBenefitM > 0 && cumulativeGross + netBenefitM >= invM) {
             const remaining = invM - cumulativeGross;
-            paybackYears = (t - 1) + (remaining / benefitM);
+            paybackYears = (t - 1) + (remaining / netBenefitM);
           } else {
-            cumulativeGross += benefitM;
+            cumulativeGross += netBenefitM;
           }
         }
       }
@@ -451,7 +455,7 @@
     }
     function renderIndustrySummary(p, results) {
       document.getElementById('industry-summary').innerHTML = `
-        <div class="long"><strong>${selectedIndustry}</strong><br>${p.useCase}<br><span style="color:var(--text-3)">Illustrative profile; replace with client-specific telemetry before investment approval.</span></div>
+        <div class="long"><strong>${selectedIndustry}</strong><br>${p.useCase}<br><span style="color:var(--text-3)">Illustrative profile; replace with client-specific telemetry before investment approval.</span>${p.belowHurdle ? '<br><span style="color:var(--text-2)"><strong>Below the single-workflow hurdle by design.</strong> At workflow #1 scope, this vertical does not clear the capital hurdle at conservative assumptions — the economics turn positive when foundation pod IP is reused across the workflow portfolio. See the <a href="https://grikard.github.io/revenue-intelligence-framework/" target="_blank" rel="noopener noreferrer">multiplier economics in the companion framework</a>.</span>' : ''}</div>
         <div class="summary-kpi"><div class="summary-kpi-label">WACC</div><div class="summary-kpi-val">${(+p.wacc).toFixed(1)}%</div></div>
         <div class="summary-kpi"><div class="summary-kpi-label">Tax rate</div><div class="summary-kpi-val">${p.tax}%</div></div>
         <div class="summary-kpi"><div class="summary-kpi-label">Recurring cost</div><div class="summary-kpi-val">${p.recurring}% / yr</div></div>
@@ -502,7 +506,7 @@
         const r = compute(p);
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td><strong>${name}</strong></td>
+          <td><strong>${name}</strong>${p.belowHurdle ? ' <span style=\"color:var(--text-3); font-weight:400; font-size:11px\">— below single-workflow hurdle</span>' : ''}</td>
           <td>${moneyM(p.revenue)}</td>
           <td>${(+p.improvement).toFixed(2)}%</td>
           <td>${p.margin}%</td>
